@@ -1,41 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="es-MX">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Seleccionar líneas aleatorias</title>
+  <style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    input[type="number"] {
+      min-width: 200px;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar líneas aleatorias</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <form>
-        <label for="howManyLines">Ingrese un número entero menor o igual a:</label>
-        <input type="number" id="InputHowManyLines" name="input" min="0" max="`totalLines`" step="1"
-            onfocus="setPlaceholder()">
-        <button type="button" onclick="showSelectedLines()">Seleccionar líneas aleatorias</button>
-    </form>
+  <h1>Generador de "Lore" aleatorio Genshin Impact</h1>
+  <div id="num-lines-selector">
+    <label for="numLines">Cantidad de líneas a elegir</label>
+    <input id="numLines" type="number" min="1">
+    <button type="button" onclick="putTextLines()">Seleccionar líneas aleatorias</button>
+  </div>
 
-    <div id="selected-lines"></div>
+  <div id="selected-lines"></div>
 
-    <script>
-        function contar_lineas(rutas_archivos) {
-            let total_lineas = 0;
-            let lineas = [];
-
-            for (let i = 0; i < rutas_archivos.length; i++) {
-                const fr = new FileReader();
-                fr.readAsText(rutas_archivos[i]);
-
-                fr.onload = function () {
-                    const contenido = fr.result;
-                    lineas.concat(contenido.split("\n"));
-                };
-            }
-            console.table(lines);
-            
-            total_lineas = lineas.length;
-            return total_lineas;
-        }
-    </script>
+  <script src="format_elements.js">
+  </script>
 </body>
 
 </html>
